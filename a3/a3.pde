@@ -3,6 +3,10 @@ String path = "data1.csv";
 
 /* CONSTANTS */
 float ENERGY_THRESHOLD = 0.005;
+float NODE_RADIUS = 10;
+float K2 = 0.001;
+float K1 = 0.001;
+float TIME = 1.0;
 
 Graph myGraph;
 
@@ -57,7 +61,7 @@ void parse() {
   
   float totalEnergy = 0.0; /* TODO: WHAT HERE??? */
   
-  testParser(nodes, edges);
+ // testParser(nodes, edges);
   
   myGraph = new Graph(nodes, edges, totalEnergy, ENERGY_THRESHOLD);
   
@@ -75,23 +79,31 @@ Node getNodeById(ArrayList<Node> nodes, int id) {
   
 }
 
-void testParser(ArrayList<Node> nodes, ArrayList<Edge> edges) {
-
-  println("");
-  println(" === PRINTING ALL NODES === "); 
-  
-  for (Node n : nodes) {
-    println("Node ", n.getID(), " ... ", n.getMass());
+  void draw(){
+    background(255);
+    myGraph.animate();
+    myGraph.render(); 
   }
   
-  println("");
-  println(" === PRINTING ALL EDGES === "); 
   
-  for (Edge e : edges) {
-    println("Edge between Nodes ", e.node1.getID(), 
-            " and ", e.node2.getID(), " ... Resting length: ", 
-            e.resting_length);
-  }
 
-}
+//void testParser(ArrayList<Node> nodes, ArrayList<Edge> edges) {
+
+//  println("");
+//  println(" === PRINTING ALL NODES === "); 
+  
+//  for (Node n : nodes) {
+//    println("Node ", n.getID(), " ... ", n.getMass());
+//  }
+  
+//  println("");
+//  println(" === PRINTING ALL EDGES === "); 
+  
+//  for (Edge e : edges) {
+//    println("Edge between Nodes ", e.node1.getID(), 
+//            " and ", e.node2.getID(), " ... Resting length: ", 
+//            e.resting_length);
+//  }
+
+//}
  

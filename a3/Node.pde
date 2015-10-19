@@ -2,8 +2,9 @@ class Node {
   int id;
   float mass;
   Tuple position;
-  float x_velocity;
-  float y_velocity;  
+  Tuple velocity;
+  
+  boolean highlighted;
 
   // Tuple force;
   // Edge[] edges;
@@ -12,6 +13,8 @@ class Node {
     id = _id;
     mass = _mass;
     
+
+    velocity = new Tuple (0.0, 0.0);
     /* Client has option of creating node with
      * random position
      */
@@ -38,10 +41,28 @@ class Node {
 
   // gives the magnitude of the total velocity
   float getVelocity() {
-    return sqrt(sq(x_velocity) + sq(y_velocity));
+    return sqrt(sq(velocity.x) + sq(velocity.y));
+  }
+  
+  void setVelocityX(float f){
+    float acceleration = f / mass;
+    velocity.x = velocity.x + (acceleration * TIME);
+  }
+  
+  void setVelocityY(float f){
+    float acceleration = f / mass;
+    velocity.y = velocity.y + (acceleration * TIME); 
+  }
+  
+  void move(){
+    position.x += velocity.x;
+    position.y += velocity.y;
   }
   
   void render(){
     
+    if(highlighted) fill(0, 255, 0);
+    else fill(135, 206, 250);
+    ellipse(position.x, position.y, NODE_RADIUS, NODE_RADIUS);
   }
 }
