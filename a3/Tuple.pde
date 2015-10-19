@@ -1,20 +1,26 @@
 class Tuple {
- int _x;
- int _y;
+ float x;
+ float y;
  
- getX(){
+ Tuple(float _x, float _y) {
+   x = _x;
+   y = _y;
+ }
+ 
+ float getX(){
    return x; 
  }
  
-  getY(){
+ float getY(){
    return y; 
  }
  
-  setX(int x){
-   _x = x; 
+ void setX(float _x){
+   x = _x; 
  }
  
-  setY(int y){
-   _y = y; 
+ void setY(float _y){
+   y = _y; 
  }
+ 
 }
